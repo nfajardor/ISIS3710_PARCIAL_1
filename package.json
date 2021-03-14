@@ -2,14 +2,7 @@
   "name": "ISIS3710_PARCIAL_1",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
-  "dependencies": {
-    "node-fetch": "^2.6.1"
-  },
-  "devDependencies": {
-    "add-gitignore": "^1.1.1",
-    "eslint": "^7.21.0"
-  },
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/nfajardor/ISIS3710_PARCIAL_1/issues"
   },
-  "homepage": "https://github.com/nfajardor/ISIS3710_PARCIAL_1#readme"
+  "homepage": "https://github.com/nfajardor/ISIS3710_PARCIAL_1#readme",
+  "devDependencies": {
+    "eslint": "^7.22.0"
+  }
 }

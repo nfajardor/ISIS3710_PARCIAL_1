@@ -1,39 +1,25 @@
-//const fetch = require("node-fetch");
-const json = require("./media/data");
+const url = "https://gist.githubusercontent.com/josejbocanegra/9a28c356416badb8f9173daf36d1460b/raw/5ea84b9d43ff494fcbf5c5186544a18b42812f09/restaurant.json";
 
-function addItem(item){
-    let li = document.createElement('li');
-    li.class = "nav-item";
-    li.appendChild(addItem2(item));
-}
-function addItem2(name){
-    let a = document.createElement('a');
-    a.textContent = name;
-    a.className = "nav-link";
-    a.href = "#" + name;
-}
+let categorias = [];
 
-let cats = [];
-for(let  i = 0;i<json.length;i++){
-    cats.push(json[i].name);
-}
-console.log(cats);
-let menu = document.querySelector('#menu');
-
-for(let i = 0; i<cats.length;i++){
-    menu.appendChild(addItem(cats[i]));
-    console.log(cats[i]);
-}
-
-/*
-  fetch("data.json").then(function(response) {
-  response.text().then(function(text) {
-    let obj = JSON.parse(text);
-        
-        let cats = [];
-        for(let  i = 0;i<obj.length;i++){
-          cats.push(obj[i].name);
-        }
-        console.log(cats);
-  });
-});*/
+fetch(url).then(res=>res.json()).then(res=>{
+    categorias = res;
+}).then(()=>{
+    let ul = document.getElementById("navMenu");
+    for(let cat of categorias){
+        let name = cat.name;
+        let name2 = name.replace(/\s+/g,'');
+        console.log("Name: "+name);
+        let li = document.createElement("li");
+        li.classList.add('nav-item');
+        let a = document.createElement("a");
+        a.classList.add("nav-link");
+        let tarId = "#"+name2;
+        console.log("ID: "+ tarId);
+        a.href = tarId;
+        a.setAttribute("data-toggle", "tab");
+        a.textContent = name;
+        li.appendChild(a);
+        ul.appendChild(li);
+    }
+});
