@@ -1,0 +1,29 @@
+.cardTitle {
+    font-size:11px;
+    text-align: left;
+}
+.card-body {
+    padding-top: 0px;
+}
+.cardDescription{
+    font-size:11px;
+    text-align: left;
+    text-justify: initial;
+}
+.btn-dark {
+    font-size:11px; 
+    padding-top: 0px;
+    text-align: left;
+}
+.totalPriceTxt {
+    font-size:13px;
+    text-align: left;
+}
+.orderButtons {
+    border-width: 1px;
+    border-color: black;
+}
+.btncol{
+    padding-right: 0;
+    padding-left: 0;
+}
