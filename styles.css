@@ -27,3 +27,9 @@
     padding-right: 0;
     padding-left: 0;
 }
+.btn-light {
+    background-color: #f3e9dd;
+}
+.btn-danger {
+    border-color: #46c3c1;
+}

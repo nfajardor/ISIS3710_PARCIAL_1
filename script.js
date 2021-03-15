@@ -210,7 +210,6 @@ function setCart(){
     let tbody = document.createElement("tbody");
     
     for(let c of cart){
-        
         if(c[0]>0){
             itid++;
             let trb = document.createElement("tr");
@@ -336,7 +335,9 @@ function setCart(){
     let btncancelnode = document.createTextNode("Cancel");
     btncancel.appendChild(btncancelnode);
     btncancel.setAttribute("type","button");
-    btncancel.onclick = cancelOrder;
+    btncancel.setAttribute("data-toggle","modal");
+    btncancel.setAttribute("data-target","#theModal");
+    
     btncancelcol.appendChild(btncancel);
 
     let btnconfirm = document.createElement("button");
@@ -363,14 +364,27 @@ function setCart(){
     content.appendChild(finalrow);
 }
 
+/* Cancela la orden */
 function cancelOrder(){
-    console.log("Cancel");
+    cart = [];
+    setCart();
 }
+
+/* Confirma la orden */
 function confirmOrder(){
-
-    console.log("Cancel");
+    let itid = 0;
+    let arr = []
+    for(let c of cart){
+        if(c[0]>0){
+            itid++;
+            let prod = {item: itid, quantity: c[0], description: c[1].name, unitPrice: c[1].price};
+            arr.push(prod);
+        }
+    }
+    console.log(arr);
 }
 
+/* Aumenta en 1 la cantidad del producto respectivo. */
 function modifyElementPlus(btn){
     let btnid = btn.target.id.slice(0,-1);
     for(let c of cart){
@@ -381,6 +395,7 @@ function modifyElementPlus(btn){
     setCart();
 }
 
+/* Reduce en 1 la cantidad del producto respectivo. Si este llega a 0 será eliminado */
 function modifyElementMinus(btn){
     let btnid = btn.target.id.slice(0,-1);
     for(let c of cart){
@@ -440,5 +455,9 @@ colCarro.appendChild(node);
 
 let foot = document.getElementById("footerText");
 foot.style.fontSize = "small";
+
+/* Ajustes para el botón de confirmar la cancelación del pedido */
+let modalbtncancel = document.getElementById("cancelOrderModal");
+modalbtncancel.onclick=cancelOrder;
 
 setCart();
