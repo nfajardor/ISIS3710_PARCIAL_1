@@ -60,7 +60,7 @@ function setContent(category){
     for(let p of prods){ 
         let col = createCol(1);
         let card = document.createElement("div");
-        card.style.height = "25rem";
+        card.style.height = "27rem";
         card.style.width = "10rem";
         card.classList.add("card");
         let imgCard = document.createElement("img");
