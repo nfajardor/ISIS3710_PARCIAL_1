@@ -23,13 +23,29 @@
     border-width: 1px;
     border-color: black;
 }
-.btncol{
-    padding-right: 0;
-    padding-left: 0;
-}
+
 .btn-light {
     background-color: #f3e9dd;
 }
 .btn-danger {
     border-color: #46c3c1;
 }
+.modbtn {
+    margin-right: 3px;
+    margin-left: 3px;
+}
+.navmenu {
+    background-color: #323a42;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.navmenuitem{
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+@font-face {
+    font-family: title;
+    src: url(https://fonts.google.com/specimen/Satisfy?preview.text_type=custom);
+  }
+  .mainTitleText {
+      font-family: title;
+  }

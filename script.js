@@ -18,6 +18,7 @@ fetch(url).then(res=>res.json()).then(res=>{
         let col = createCol(1);
         let p = createText("p", name);
         p.onclick = setContent;
+        p.classList.add("navmenuitem");
         col.appendChild(p);
         menu.appendChild(col);
         let prod = cat.products;
@@ -58,7 +59,6 @@ function setContent(category){
     let row2 = createRow();
     for(let p of prods){ 
         let col = createCol(1);
- //       col.classList.add("col-3");
         let card = document.createElement("div");
         card.style.height = "25rem";
         card.style.width = "10rem";
@@ -264,14 +264,12 @@ function setCart(){
     
             let prodName = c[1].name.replace(/\s+/g,'');
             let td5 = document.createElement("td");
-            let btnrow = createRow();
-            let btncolplus = createCol(6);
-            let btncolminus = createCol(6);
-            btncolplus.classList.add("btncol");
-            btncolminus.classList.add("btncol");
+            
+
 
             let btnplus = document.createElement("button");
             btnplus.classList.add("btn");
+            btnplus.classList.add("modbtn");
             btnplus.classList.add("btn-secondary");
             btnplus.classList.add("btn-sm");
             btnplus.id = prodName+"p";
@@ -279,10 +277,11 @@ function setCart(){
             btnplus.appendChild(pbtn);
             btnplus.setAttribute("type","button");
             btnplus.onclick = modifyElementPlus;
-            btncolplus.appendChild(btnplus);
+
 
             let btnminus = document.createElement("button");
             btnminus.classList.add("btn");
+            btnminus.classList.add("modbtn");
             btnminus.classList.add("btn-secondary");
             btnminus.classList.add("btn-sm");
             btnminus.id = prodName+"m";
@@ -290,11 +289,10 @@ function setCart(){
             btnminus.appendChild(mbtn);
             btnminus.setAttribute("type","button");
             btnminus.onclick = modifyElementMinus;
-            btncolminus.appendChild(btnminus);
 
-            btnrow.appendChild(btncolplus);
-            btnrow.appendChild(btncolminus);
-            td5.appendChild(btnrow);
+
+            td5.appendChild(btnplus);
+            td5.appendChild(btnminus);
             trb.appendChild(td5);
     
     
@@ -302,8 +300,7 @@ function setCart(){
         }
     }
 
-    table.appendChild(tbody);
-    tableRow.appendChild(table);
+
     let finalrow = createRow();
     let totalcol = createCol(11);
     let totPrice = totalPrice+"";
@@ -319,46 +316,41 @@ function setCart(){
     let pA = temp3[0];
     let pB = temp3[1].substring(0,2);
     totPrice = pA + "." + pB;
-    let totaltxt = createText("p", '<strong>$'+totPrice+'</strong>');
+    let totaltxt = createText("p", '<strong>Total: $'+totPrice+'</strong>');
     totaltxt.classList.add("totalPriceTxt");
     totalcol.appendChild(totaltxt);
     let btnscol = createCol(1);
-    let btnsrow = createRow();
-    let btncancelcol = createCol(6);
-    let btnconfirmcol = createCol(6);
 
     let btncancel = document.createElement("button");
     btncancel.classList.add("btn");
     btncancel.classList.add("btn-danger");
     btncancel.classList.add("btn-sm");
     btncancel.classList.add("orderButtons");
+    btncancel.classList.add("modbtn");
     let btncancelnode = document.createTextNode("Cancel");
     btncancel.appendChild(btncancelnode);
     btncancel.setAttribute("type","button");
     btncancel.setAttribute("data-toggle","modal");
     btncancel.setAttribute("data-target","#theModal");
-    
-    btncancelcol.appendChild(btncancel);
+    btnscol.appendChild(btncancel);
 
     let btnconfirm = document.createElement("button");
     btnconfirm.classList.add("btn");
     btnconfirm.classList.add("btn-light");
     btnconfirm.classList.add("btn-sm");
     btnconfirm.classList.add("orderButtons");
+    btnconfirm.classList.add("modbtn");
     let btnconfirmnode = document.createTextNode("Confirm order");
     btnconfirm.appendChild(btnconfirmnode);
     btnconfirm.setAttribute("type","button");
     btnconfirm.onclick = confirmOrder;
-    btnconfirmcol.appendChild(btnconfirm);
+    btnscol.appendChild(btnconfirm);
     
     btnscol.classList.add("btncol");
-    btnconfirmcol.classList.add("btncol");
-    btncancelcol.classList.add("btncol");
 
+    table.appendChild(tbody);
+    tableRow.appendChild(table);
     finalrow.appendChild(totalcol);
-    btnsrow.appendChild(btncancelcol);
-    btnsrow.appendChild(btnconfirmcol);
-    btnscol.appendChild(btnsrow);
     finalrow.appendChild(btnscol);
     content.appendChild(table);
     content.appendChild(finalrow);
